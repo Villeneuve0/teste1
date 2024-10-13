@@ -1,0 +1,536 @@
+<!DOCTYPE html><html lang="pt-br"><head>
+<script>
+// Função para obter parâmetros da URL
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+}
+
+// Função para remover um parâmetro específico da URL
+function removeURLParameter(url, parameter) {
+  var urlparts = url.split('?');
+  if (urlparts.length >= 2) {
+    var prefix = encodeURIComponent(parameter) + '=';
+    var pars = urlparts[1].split(/[&;]/g);
+    for (var i = pars.length; i-- > 0;) {
+      if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+        pars.splice(i, 1);
+      }
+    }
+    return urlparts[0] + (pars.length > 0 ? '?' + pars.join('&') : '');
+  }
+  return url;
+}
+
+// Verifica se a página foi acessada pelo script específico
+if (getURLParameter('vanessa') !== 'true') {
+  // Redireciona o usuário para outra página (por exemplo, página inicial)
+  window.location.href = "sitemap.xml";
+} else {
+  // Remove apenas o parâmetro 'vanessa' da URL sem recarregar a página
+  var cleanURL = removeURLParameter(window.location.href, 'vanessa');
+  history.replaceState(null, null, cleanURL);
+}
+</script>
+	
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Açaí Fresh</title>
+		<link rel="icon" type="image/png" href="images/favicon.png">
+		<link rel="stylesheet" href="css/all.css" crossorigin="anonymous">
+		<link href="css/owl.carousel.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<style>
+			#myImg {
+			  border-radius: 5px;
+			  cursor: pointer;
+			  transition: 0.3s;
+			}
+
+			#myImg:hover {opacity: 0.7;}
+
+			.modalacai {
+			  display: none; 
+			  position: fixed; 
+			  z-index: 1; 
+			  padding-top: 4%; 
+			  left: 0;
+			  top: 0;
+			  width: 100%; 
+			  height: 100%;
+			  overflow: auto; 
+			  background-color: rgb(0,0,0); 
+			  background-color: rgba(0,0,0,0.9); 
+			}
+          @media (max-width: 600px){
+	        .modalacai-content {
+			  max-width: 80%!important;
+			}
+			.modalacai {
+			  padding-top: 32%!important;
+            }
+         }
+          @media (max-width: 1024px) and (min-width: 600px){
+			  .modalacai-content {
+			    max-width: 70%!important;
+			}
+			.modalacai {
+			  padding-top: 12%!important;
+            }
+			  
+			  
+		  }
+	
+			.modalacai-content {
+			  margin: auto;
+			  display: block;
+			  width: 80%;
+			  max-width: 25%;
+			}
+
+			#caption {
+			  margin: auto;
+			  display: block;
+			  width: 80%;
+			  max-width: 700px;
+			  text-align: center;
+			  color: #ccc;
+			  padding: 10px 0;
+			  height: 150px;
+			}
+
+			
+			.modalacai-content, #caption {  
+			  -webkit-animation-name: zoom;
+			  -webkit-animation-duration: 0.6s;
+			  animation-name: zoom;
+			  animation-duration: 0.6s;
+			}
+
+			@-webkit-keyframes zoom {
+			  from {-webkit-transform:scale(0)} 
+			  to {-webkit-transform:scale(1)}
+			}
+
+			@keyframes zoom {
+			  from {transform:scale(0)} 
+			  to {transform:scale(1)}
+			}
+
+			
+			.close {
+			  position: absolute;
+			  top: 15px;
+			  right: 35px;
+			  color: #f1f1f1;
+			  font-size: 40px;
+			  font-weight: bold;
+			  transition: 0.3s;
+			}
+
+			.close:hover,
+			.close:focus {
+			  color: #bbb;
+			  text-decoration: none;
+			  cursor: pointer;
+			}
+
+			
+			@media only screen and (max-width: 700px){
+			  .modalacai-content {
+				width: 100%;
+			  }
+			}
+			</style>
+	</head>
+	<body>
+		<header>
+			<nav class="menu">
+				<button class="btnmenu"><span></span><span></span><span></span></button>
+				<ul>
+					<li><a href="#empresa" class="scroll">Empresa</a></li>
+					<li><a href="#produtos" class="scroll">Produtos</a></li>
+					<li><a href="#beneficios" class="scroll">Benefícios</a></li>
+					<li><a href="#receitas" class="scroll">Receitas</a></li>
+					<li><a href="#contato" class="scroll">Contato</a></li>
+				</ul>
+			</nav>
+			<!--<img src="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/logo-banner.png" alt="Açaí Fresh" class="logo">
+			<img src="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/acai-banner.png" alt="Açaí Fresh" class="acaibanner">-->
+		</header>
+				
+		<section class="sobre" id="empresa">
+			<div class="container">
+				<h1 class="titlesection">Quem Somos</h1>
+				<!--<h2>Quem Somos</h2>-->
+				<div class="content-sobre">
+					<p>Açaí Fresh é uma empresa estabelecida no mercado desde 2004 sendo reconhecida pela qualidade diferenciada do seu delicioso creme de açaí, que é um sucesso em todas as regiões que atua.</p>
+					<p>Nossa fábrica está sediada no Bairro Jardim Canadá, pólo industrial e comercial do município de Nova Lima, Minas Gerais.</p>
+					<p>No local estão concentradas as instalações administrativas e de fabricação do Açaí Fresh.</p>
+					<p>Nossa fábrica é equipada com tecnologia necessária para a produção do creme de açaí, nas suas diversas formas, destacando-se: máquina trituradora, pasteurizadora, tina reguladora, processadora contínua, seladoras de potes, etc.</p>
+				</div>
+				<div class="content-onde">
+					<h2>O AÇAÍ QUE É GOSTOSO E FAZ BEM</h2>
+					<p>O fruto para a fabricação do nosso açaí é colhido de maneira sustentável direto da Floresta Amazônica e adquirido de produtores selecionados para a garantia da qualidade. </p>
+					<p>Oferecemos ao mercado uma opção nutritiva e saborosa ideal para aumentar os lucros de diferentes tipos de negócios. Presente em mais de 1000 pontos de vendas pelo Brasil e no exterior, a empresa conta com uma equipe de distribuidores preparada para prestar o apoio logístico que você precisa.</p>
+				</div>
+				<img src="images/tijela.png" class="tigela">
+				<img src="images/acai-topo.png" class="bgacai">
+			</div>
+		</section>
+		<section class="produtos" id="produtos">
+			<div class="container">
+				<h1 class="titlesection">Produtos</h1>
+			</div>
+			<div class="galeriaproduto clearfix">
+				<div class="owl-carousel owl-theme owlproduto">
+					<div class="item">
+						<img src="images/natural220ml.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>NATURAL 220ML</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/natural500ml.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>NATURAL 500ML</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/natural1-5l.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>NATURAL 1,5L</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/natural3-6l.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>NATURAL 3,6L</h2>
+						</div>
+					</div>
+					<!--<div class="item">
+						<img src="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/naturalcaixa-5L.png" alt="Açaí Fresh" class="">
+						<div class="tituloproduto">
+							<h2>NATURAL 5L</h2>
+						</div>
+					</div>-->
+					<div class="item">
+						<img src="images/naturalcaixa-10L.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>NATURAL 10L</h2>
+						</div>
+					</div>
+				</div>
+				<div class="owl-carousel owl-theme owlproduto">
+				<!--<div class="item">
+						<img src="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/Acai-zero-B.png" alt="Açaí Fresh Zero" class="">
+						<div class="tituloproduto">
+							<h2>GARRAFINHA ZERO 300ML</h2>
+						</div>
+					</div> -->
+					<div class="item">
+						<img src="images/zero-220ml.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>LIGHT 220ML</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/zero-500ml.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>LIGHT 500ML</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/zero-1%2C5l.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>LIGHT 1,5L</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/balde-zero-3%2C6l.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>LIGHT 3,6L</h2>
+						</div>
+					</div>
+					<!--<div class="item">
+						<img src="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/mockup-blest-zero.png" alt="Açaí Fresh" class="">
+						<div class="tituloproduto">
+							<h2>BLEST FRUIT ZERO</h2>
+						</div>
+					</div>-->
+				</div>
+				<div class="owl-carousel owl-theme owlproduto">
+					<div class="item">
+						<img src="images/atletico-500ml.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>CLUBES ATLETICO 500ML</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/atletico-1%2C5l.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>CLUBES ATLETICO 1,5L</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/cruzeiro-500ml.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>CLUBES CRUZEIRO 500ML</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/cruzeiro-1%2C5l.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>CLUBES CRUZEIRO 1,5L</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/manahzon-10L.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>MANAHZON 10L</h2>
+						</div>
+					</div>
+				</div>
+				
+				<div class="owl-carousel owl-theme owlproduto">
+					<div class="item">
+						<img src="images/Garrafa-a%C3%83%C2%A7ai-1650mm-A.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>AÇAÍ COM EXTRATO DE GUARANÁ</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/guarana-zero.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>AÇAÍ COM EXTRATO DE GUARANÁ ZERO</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/zero-15g.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>AÇAÍ COM 15G DE PROTEÍNA</h2>
+						</div>
+					</div>
+					<div class="item">
+						<img src="images/pre-treino.png" alt="Açaí Fresh" class>
+						<div class="tituloproduto">
+							<h2>AÇAÍ COM GUARANÁ, TAURINA E CAFEÍNA</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="beneficios" id="beneficios">
+			<div class="container">
+				<h1 class="titlesection">Benefícios</h1>
+				<div class="table">
+					<ul>
+						<li data-tab="antioxidante"><span>Anti-<br>oxidante</span></li>
+						<li data-tab="redutor"><span>Redutor da <br>taxa de <br>colesterol</span></li>
+						<li data-tab="memoriavisao"><span>Memória <br>e visão</span></li>
+						<li data-tab="revitalizador"><span>Revitalizador <br>da pele</span></li>
+						<li data-tab="regulador"><span>Regulador <br>intestinal</span></li>
+						<li data-tab="emagrecedor"><span>Emagrecedor</span></li>
+					</ul>
+					<div class="conteudotable">
+						<div class="tablecontent antioxidante ativo">
+							<p>Sua alta concentração de antocionina, substância que age como potente anti-oxidante, diminui a ação dos radicais livres.</p>
+						</div>
+						<div class="tablecontent redutor">
+							<p>A anticionina somada às vitaminas C e E ajudam a circulação sanguínea e auxiliam na redução da taxa de colesterol.</p>
+						</div>
+						<div class="tablecontent memoriavisao">
+							<p>As vitaminas B1 e B2 auxiliam na melhora da memória e da visão.</p>
+						</div>
+						<div class="tablecontent revitalizador">
+							<p>As gorduras presentes na fruta, Omega 6 e Omega 9 ajudam o processo de revitalização da pele e combatem o envelhecimento precoce.</p>
+						</div>
+						<div class="tablecontent regulador">
+							<p>Sua alta concentração de fibras auxilia no funcionamento do intestino.</p>
+						</div>
+						<div class="tablecontent emagrecedor">
+							<p>Ao contrário do que se imagina o açaí pode ajudar no processo de emagrecimento devido à presença de ômegas 6 e 9, que aceleram o metabolismo e a queima de calorias, bastando consumí-lo  moderadamente, principalmente na forma do creme natural.</p>
+						</div>
+					
+					</div>
+				
+				</div>
+			</div>
+		</section>
+		<section class="receitas" id="receitas">
+			<div class="container">
+				<h1 class="titlesection">Receitas</h1>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col4">
+						<div class="receita" style="background-image:url(images/receita01.jpg)">
+							<div class="captionreceita" data-imagem="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/receita01.jpg" data-receita="<p>Ingredientes</p><br><br><p>100g de Manah Fresh</p><p>1 banana prata picada em fatias</p><p>200ml de iogurte natural</p><p>200g de creme de leite</p><p>200ml de leite</p><p>100g de leite condensado</p><br><br><p>Modo de preparo</p><br><p>Bata todos os ingredientes no liquidificador, coloque em formas de gelo ou formas próprias para picolé e leve ao congelador por pelo menos 6 horas ou até que fique firme para desenformar.</p>">
+								<h2>picolé manahfresh</h2>
+							</div>
+						</div>
+					</div>
+					<div class="col4">
+						<div class="receita" style="background-image:url(images/receita02.jpg)">
+							<div class="captionreceita" data-imagem="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/receita02.jpg" data-receita="<p>Ingredientes</p><br><br><p>1 xícara (chá) de Manah Fresh</p><p>1 xícara (chá) de água</p><p>1 lata de leite condensado</p><p>1 pacote de gelatina sabor amora</p><p>1 lata de creme de leite</p><br><br><p>Modo de preparo</p><br><p>Leve a água para ferver, depois dissolva a gelatina e deixe esfriar. No liquidificador coloque o leite condensado e o Manah Fresh. Por último o creme de leite e a gelatina. Bata por 2 minutos no liquidificador e coloque em tigelas. Leve à geladeira até atingir a consistência desejada.</p>">
+								<h2>Mousse de açaí</h2>
+							</div>			
+						
+						</div>
+					</div>
+					<div class="col4">
+						<div class="receita" style="background-image:url(images/receita03.jpg)">
+							<div class="captionreceita" data-imagem="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/receita03.jpg" data-receita="<p>Ingredientes</p><br><br><p>1 lata de leite condensado</p><p>200g de Manah Fresh</p><p>Margarina para enrolar</p><p>1 prato raso de granola ou granulado</p><br><br><p>Modo de preparo</p><br><p>Em uma panela, leve ao fogo o leite condensado e o Manah Fresh, mexendo em fogo brando até dar a consistência de brigadeiro. Deixe em repouso até esfriar. Modele pequenas bolinhas com o auxílio da margarina. Depois, cubra cada uma com granola ou granulado.</p>">
+								<h2>Brigadeiro de açaí</h2>
+							</div>	
+						
+						</div>
+					</div>
+					<div class="col4">
+						<div class="receita" style="background-image:url(images/receita04.jpg)">
+							<div class="captionreceita" data-imagem="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/receita04.jpg" data-receita="<p>Ingredientes</p><br><br><p>200ml de Manah Fresh</p><p>300ml de suco de laranja</p><p>2 morangos</p><p>2 bananas</p><p>1 colher de açúcar mascavo</p><br><br><p>Modo de preparo</p><br><p>Bata todos os ingredientes no liquidificador e sirva bem gelado.</p>">
+								<h2>Manah Fresh turbinado</h2>
+							</div>	
+						
+						</div>
+					</div>
+					<div class="col4">
+						<div class="receita" style="background-image:url(images/receita05.jpg)">
+							<div class="captionreceita" data-imagem="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/receita05.jpg" data-receita="<p>Ingredientes</p><br><br><p>2 xícaras (chá) de açúçar 300g de margarina</p><p>5 ovos 500ml de Manah Fresh</p><p>3 xícaras (chá) de farinha de trigo</p><p>1 colher (sopa) de fermento em pó</p><br><br><p>Cobertura:</p><br><br><p>1 lata de leite condensado,/p><p>1 lata de creme de leite com soro</p><p>2 xícaras (chá) de farinha de tapioca</p><p>500ml de Manah Fresh</p><br><br><p>Modo de preparo</p><br><p>Em uma vasilha, bata o açúcar, a manteiga e os ovos até formar um creme fofo e esbranquiçado; acrescente a farinha de trigo, o fermento e o Manah Fresh. Misture tudo até os ingredientes ficarem homogêneos. Unte uma forma com margarina e farinha, despeje tudo, leve ao forno médio pré-aquecido e deixe assar por 30 minutos. Enquanto isso, adicione o Manah Fresh e a farinha de tapioca em uma outra vasilha; misture e deixe descansar de 20 a 30 minutos. Depois de amolecida a tapioca, adicione o leite condensado, o creme de leite e misture tudo muito bem. Assim que o bolo estiver assado, ainda quente, jogue a cobertura em cima, deixe esfriar e sirva.</p>">
+								<h2>Bolo especial</h2>
+							</div>
+						
+						
+						</div>
+					</div>
+					<div class="col4">
+						<div class="receita" style="background-image:url(images/receita06.jpg)">
+							<div class="captionreceita" data-imagem="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/receita06.jpg" data-receita="<p>Ingredientes</p><br><br><p>3 bolas de sorvete de creme</p><p>½ xícara de Manah Fresh</p><p>½ xícara de leite gelado leite condensado para decorar</p><br><br><p>Modo de preparo</p><br><p>Primeiramente, derrame o leite condensado pelas bordas de um copo grande e coloque uma bola de sorvete de creme no fundo. Depois bata o restante do sorvete juntamente com o Manah Fresh e o leite. Derrame no copo e sirva em seguida.</p>">
+								<h2>Milk shake cremoso</h2>
+							</div>	
+						
+						</div>
+					</div>
+					<div class="col4">
+						<div class="receita" style="background-image:url(images/receita-coquetel-acai.jpg)">
+							<div class="captionreceita" data-imagem="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/receita-coquetel-acai.jpg" data-receita="<p>Ingredientes</p><br><br><p>2 colheres (sopa) de Manah Fresh</p><p>2 colheres (sopa) de suco de limão siciliano</p><p>1 pêssego fresco picado</p><p>1 dose de vodka</p><p>1 colher (chá) de xarope de guaraná</p><br><br><p>Modo de preparo</p><br><p>Coloque tudo na coqueteleira, complete com gelo e chacoalhe até que os ingredientes estejam bem misturados. Coe e sirva em copo longo com gelo e um canudo.</p>">
+								<h2>Coquetel energético</h2>
+							</div>	
+						
+						</div>
+					</div>
+					<div class="col4">
+						<div class="receita" style="background-image:url(images/receita-molho-acai.jpg)">
+							<div class="captionreceita" data-imagem="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/receita-molho-acai.jpg" data-receita="<p>Ingredientes</p><br><br><p>100g de Manah Fresh</p><p>1 colher (café) de mel  suco de ½ limão 1 colher (chá) de azeite  Sal a gosto</p><br><br><p>Modo de preparo</p><br><p>Em uma tigela, misture os ingredientes com o auxílio de um fouet (batedor de claras). Sirva sobre saladas de folhas, peixes grelhados ou carnes assadas.  </p>">
+								<h2>Molho agridoce</h2>
+							</div>	
+						
+						</div>
+					</div>
+					<div class="col4">
+						<div class="receita" style="background-image:url(images/receita-vitamina-de-acai.jpg)">
+							<div class="captionreceita" data-imagem="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/receita-vitamina-de-acai.jpg" data-receita="<p>Ingredientes</p><br><br><p>2copos americanos de Manah Fresh</p><p>3 copos na mesma medida de leite</p><p>2 bananas picadas</p><p>2 colheres de açúcar</p><br><br><p>Modo de preparo</p><br><p>Coloque todos os ingredientes no liquidificador e bata por 2 minutos. Sirva imediatamente.</p>">
+								<h2>Vitamina</h2>
+							</div>	
+						
+						</div>
+					</div>
+					<div class="col4">
+						<div class="receita" style="background-image:url(images/receita-pudim-de-acai.jpg)">
+							<div class="captionreceita" data-imagem="https://www.acaifresh.com.br/wp-content/themes/themeacai/images/receita-pudim-de-acai.jpg" data-receita="<p>Ingredientes</p><br><br><p>Para o pudim</p><p>1 1/4 xícara (chá) de Manah Fresh</p><p>1 lata de leite condensado</p><p>4 ovos Manteiga para untar</p><p>Para a cobertura</p>1 pote de iogurte natural</p><p>1 colher (sopa) de leite</p><p>2 colheres (sopa) de açúcar</p><br><br><p>Modo de preparo</p><br><p>Bata no liquidificador os ingredientes do pudim até obter uma mistura homogênea. Unte uma fôrma para pudim de 20 cm de diâmetro e despeje a mistura. Leve ao forno médio (180°C), em banho-maria, para assar até ficar firme. Deixe esfriar e leve à geladeira.</p><p>Cobertura: Bata no liquidificador o iogurte com o leite e o açúcar. Na hora de servir, desenforme o pudim, regue com a cobertura e polvilhe a granola.</p>">
+								<h2>Pudim</h2>
+							</div>	
+						
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</section>
+		
+	
+		<footer id="contato">
+			<div class="formcontato">
+				<div class="container">
+					<h1 class="titlesection">Contato</h1>
+					<div class="row">
+						<div class="col5">
+							<h2>Onde estamos</h2>
+							<div class="maps">
+								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3747.877885694909!2d-43.988821685083316!3d-20.05555698653356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6bb9b555d7087%3A0xfc4fddeb223304eb!2sRua+Ham%C3%ADlton%2C+562+-+Jardim+Canada%2C+Nova+Lima+-+MG%2C+34000-000!5e0!3m2!1spt-BR!2sbr!4v1539704821796" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+							</div>
+						</div>
+						<div class="col7">
+							<h2>Entre em contato com a gente</h2>
+							<form>
+								<textarea placeholder="Deixe sua mensagem"></textarea>
+								<div class="row">
+									<div class="col6">
+										<input type="email" placeholder="Seu e-mail">
+									</div>
+									<div class="col6">
+										<input type="submit" value="enviar">
+									</div>
+								</div>
+								
+							</form>
+						</div>
+					</div>
+				</div>
+				<img src="images/bg-contato.png" class="bgacaicontato">
+			</div>
+			<div class="bottomfooter">
+				
+				<div class="container">
+					<div class="row">
+						<div class="col8 endereco">
+							<p>Rua Hamilton n.562 – Jardim Canadá <br>Cep 34007-622 – Nova Lima – MG | Tel (31) 99603-5170</p>
+						</div>
+						<div class="col4 redes">
+							<a href="https://www.facebook.com/Açaí-Fresh-243813232311378/" title target="_blank"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+							<a href="https://www.instagram.com/acaifresh/" title target="_blank"><i class="fab fa-instagram"></i><span>Instagran</span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	
+		<div class="modal">
+			<div class="contentmodal">
+				<button><span>fechar</span></button>
+				<div class="conteudomodal">
+				
+				</div>
+			</div>
+		</div>
+		<div id="myModal" class="modalacai" style="display: block;">
+		  <span class="close">×</span>
+		  <a href=" https://acaifresh.com.br/"><img src="images/Acai-Fresh-modal.png" class="modalacai-content" id="img01"></a>
+		  <div id="caption"></div>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script src="js/owl.carousel.min.js"></script>
+		<script src="js/custom.js"></script>
+		<script>
+		// Get the modal
+		let modal = document.getElementById("myModal");
+		function abrirpopup(){
+			
+			// Get the image and insert it inside the modal - use its "alt" text as a caption
+			modal.style.display = "block";
+			
+			
+		}
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() { 
+		  modal.style.display = "none";
+		}
+		setTimeout(abrirpopup,2000);
+		</script>
+	
+	
+</body></html>
