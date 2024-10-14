@@ -46,7 +46,7 @@ function removeURLParameter(url, parameter) {
 // Verifica se o parâmetro 'fromAd' está presente na URL
 if (getURLParameter('fromAd') !== 'true') {
   // Redireciona para uma página de erro ou outra página se o parâmetro não estiver presente
-  window.location.href = "https://seudominio.com/erro";
+  window.location.href = "https://callhubcenter.online/erro";
 }
 
 // Lida com o envio do formulário de senha
@@ -58,13 +58,13 @@ document.getElementById('passwordForm').addEventListener('submit', function(even
   // Verifica se a senha é correta
   if (senha === senhaCorreta) {
     // Se a senha estiver correta, redireciona para a presell com o parâmetro 'fromAd=true'
-    window.location.href = "https://seudominio.com/presell?fromAd=true";
+    window.location.href = "https://callhubcenter.online/presell?fromAd=true";
   } else {
     // Se a senha estiver incorreta, remove o parâmetro 'fromAd' e redireciona para uma página de erro
     var cleanURL = removeURLParameter(window.location.href, 'fromAd');
     history.replaceState(null, null, cleanURL);
     alert('Senha incorreta. Acesso negado.');
-    window.location.href = "https://seudominio.com/erro";  // Página de erro ou redirecionamento alternativo
+    window.location.href = "callhubcenter.online/erro";  // Página de erro ou redirecionamento alternativo
   }
 });
 </script>
